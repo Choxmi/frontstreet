@@ -13,6 +13,7 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
 	<gap:plugin name="onesignal-cordova-plugin" source="npm" />
+	<plugin name="nl.x-services.plugins.toast" spec="2.0" source="pgb" />
 	<plugin name="cordova-plugin-whitelist" />
 
     <feature name="StatusBar">

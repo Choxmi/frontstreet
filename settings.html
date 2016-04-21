@@ -3,7 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta name="apple-mobile-web-app-capable" content="ye
     <title>Front Street Primary School - Contact</title>
     <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
     <link rel="stylesheet" href="css/app.css"/>
@@ -70,8 +71,7 @@
 				document.getElementById( 'checkboxes' ).appendChild(node);		
 				}
 			});
-			
-			
+
 
 			document.getElementById("submit").addEventListener("click", function(){
 			
@@ -91,20 +91,34 @@
 			for(var n = 0; n < selected.length;n++){
 					taglist[selected[n]]= "true";
 			}
-			
-			for(var m = 0; m < notselected.length;m++){
-					taglist[notselected[m]]= "";
-			}
+
 			console.log("taglist after "+taglist);
 			window.plugins.OneSignal.init("e186e7ab-7a79-49db-a001-f28bc4d58809",
                                {googleProjectNumber: "176978804568",
                                 autoRegister: false});
-		console.log("Registering");
+		window.plugins.OneSignal.getIds(function(ids) {
+			
+				if(ids == null){
+				console.log("Registering");
 		window.plugins.OneSignal.registerForPushNotifications();
 		console.log("Registered");
+		console.log("Getting");}
+		console.log("UserID: " + ids.userId);
+		console.log("PushToken: " + ids.pushToken);
+		console.log('getIds: ' + JSON.stringify(ids));
+		window.plugins.OneSignal.getTags(function(tags) {
+				console.log('Tags Received: ' + JSON.stringify(tags));
+				for(var x=0;x<json.items.length;x++){
+					document.getElementById(""+tags[x]+"").checked = true;
+				}
+			});
+		});
+		console.log("got");
 		console.log("Tag passing");
 		window.plugins.OneSignal.sendTags(taglist);
 		console.log("Tag passed");
+		window.plugins.toast.showShortTop('Categories saved', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+		window.plugins.OneSignal.deleteTags(notselected);
 		});
 	  </script>
     </div>
