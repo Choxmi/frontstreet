@@ -68,7 +68,12 @@
 				
 				var node = document.createElement('div');
 				node.innerHTML = '<input type="checkbox" id="' + json.items[i].slug + '" name="check' + i + '"><label for="check' + i + '">'+ json.items[i].name; +'</label>';
-				document.getElementById( 'checkboxes' ).appendChild(node);		
+				document.getElementById( 'checkboxes' ).appendChild(node);	
+					if(window.localStorage.getItem(json.items[i].slug) == 1){
+						document.getElementById(json.items[i].slug).checked = true;
+					}else{
+						document.getElementById(json.items[i].slug).checked = false;
+					}
 				}
 			});
 
@@ -80,11 +85,13 @@
 			
 			$('#checkboxes input:checkbox:not(:checked)').each(function() {
 				notselected.push($(this).attr('id'));
-				console.log(selected);
+				window.localStorage.setItem($(this).attr('id'), 0);
+				console.log(notselected);
 			});
 			
 			$('#checkboxes input:checked').each(function() {
 				selected.push($(this).attr('id'));
+				window.localStorage.setItem($(this).attr('id'), 1);
 				console.log(selected);
 			});
 			console.log("taglist before "+taglist);
