@@ -23,8 +23,8 @@ function oneSignal(){
 	console.log("It is calling");
 		var notificationOpenedCallback = function(jsonData) {
 			console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-			console.log(jsonData.data.url);
-			window.location = jsonData.data.url;
+			console.log(jsonData.additionalData.url);
+			window.location = jsonData.additionalData.url;
 			getNewsletters();
 		};
 
