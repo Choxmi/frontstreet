@@ -23,6 +23,8 @@ function oneSignal(){
 	console.log("It is calling");
 		var notificationOpenedCallback = function(jsonData) {
 			console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+			window.location = "newsletter.html";
+			getNewsletters();
 		};
 
 		window.plugins.OneSignal.init("e186e7ab-7a79-49db-a001-f28bc4d58809",
