@@ -76,7 +76,7 @@
 			document.getElementById("submit").addEventListener("click", function(){
 			
 			var selected = [];
-			var notselected = [];
+			var notselected = [];	
 			
 			$('#checkboxes input:checkbox:not(:checked)').each(function() {
 				notselected.push($(this).attr('id'));
@@ -96,28 +96,10 @@
 			window.plugins.OneSignal.init("e186e7ab-7a79-49db-a001-f28bc4d58809",
                                {googleProjectNumber: "176978804568",
                                 autoRegister: false});
-		window.plugins.OneSignal.getIds(function(ids) {
-			
-				if(ids == null){
-				console.log("Registering");
-		window.plugins.OneSignal.registerForPushNotifications();
-		console.log("Registered");
-		console.log("Getting");}
-		console.log("UserID: " + ids.userId);
-		console.log("PushToken: " + ids.pushToken);
-		console.log('getIds: ' + JSON.stringify(ids));
-		window.plugins.OneSignal.getTags(function(tags) {
-				console.log('Tags Received: ' + JSON.stringify(tags));
-				for(var x=0;x<json.items.length;x++){
-					document.getElementById(""+tags[x]+"").checked = true;
-				}
-			});
-		});
-		console.log("got");
-		console.log("Tag passing");
+
 		window.plugins.OneSignal.sendTags(taglist);
-		console.log("Tag passed");
-		window.plugins.toast.showShortTop('Categories saved', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+		window.localStorage.setItem("registered", 1);
+		window.plugins.toast.showShortBottom('Categories saved', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
 		window.plugins.OneSignal.deleteTags(notselected);
 		});
 	  </script>

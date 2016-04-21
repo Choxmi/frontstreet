@@ -71,6 +71,26 @@
 			var myScroll;
 			var scrollcounter;
 			var hasScrolled;
+			var hasScrolled;
+			
+			document.getElementById("navbutton2").addEventListener("click", function(){		
+			console.log("Navigate to settings");
+			if(window.localStorage.getItem("registered") == 1){
+			function onConfirm(buttonIndex) {
+				if(buttonIndex==2){
+					window.location = "settings.html";
+				}
+			}
+
+			navigator.notification.confirm(
+				'Please choose the newsletter categories!',  // message
+				onConfirm,         // callback
+				'Categories',            // title
+				['Cancel','Select']                  // buttonName
+			);
+			}
+		});
+			
 			$("#homepage").live('pageshow', function() {
 				var randomnum = Math.floor(Math.random() * 6) + 1
 				$("#mainphoto").attr('src',"photos/"+randomnum+".jpg")
