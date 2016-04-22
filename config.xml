@@ -12,12 +12,24 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
 	<gap:plugin name="onesignal-cordova-plugin" source="npm" />
+	<plugin name="nl.x-services.plugins.toast" spec="2.0" source="pgb" />
 	<plugin name="cordova-plugin-whitelist" />
 
     <feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
+	
+	<feature name="Notification">
+    <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+	</feature>
+	
+	<feature name="Notification">
+    <param name="ios-package" value="CDVNotification" />
+	</feature>
+
+	
 	
 	<allow-navigation href="*" />
 	<allow-intent href="http://*/*" />
@@ -34,7 +46,7 @@
     <preference name="deployment-target" value="6.0" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
     <preference name="detect-data-types" value="true" />
     <preference name="disable-cursor" value="false" />
     <preference name="exit-on-suspend" value="false" />
