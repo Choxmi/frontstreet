@@ -18,7 +18,7 @@
 
   </head>
 
-  <body>
+  <body onload = "onLoad()">
     <div id="homepage" data-role="page" data-dom-cache="true">
 
       <div id="homepagecontent" data-role="content" data-iscroll>
@@ -73,10 +73,19 @@
 			var hasScrolled;
 			var hasScrolled;
 			
+			function onLoad(){
 			document.addEventListener("deviceready", onDeviceReady, false);
 			
 			function onDeviceReady(){
+				splash();
 				navigate();
+				}
+			}
+			
+			function splash(){
+				if (navigator && navigator.splashscreen) {
+					navigator.splashscreen.hide();
+				}
 			}
 			
 			function navigate(){
