@@ -15,8 +15,13 @@ var connectionType = "notReady";
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+	openNavigator();
 	oneSignal();
 	checkConnection();
+}
+
+function openNavigator(){
+	navigator.splashscreen.show();
 }
 
 function oneSignal(){
@@ -25,7 +30,6 @@ function oneSignal(){
 			console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
 			console.log(jsonData.additionalData.url);
 			window.location = jsonData.additionalData.url;
-			getNewsletters();
 		};
 
 		window.plugins.OneSignal.init("e186e7ab-7a79-49db-a001-f28bc4d58809",
