@@ -15,7 +15,6 @@ var connectionType = "notReady";
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	openNavigator();
 	oneSignal();
 	checkConnection();
 }
